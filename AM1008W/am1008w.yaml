@@ -1,0 +1,55 @@
+captive_portal:
+
+uart:
+  tx_pin: GPIO1
+  rx_pin: GPIO3
+  baud_rate: 9600
+  id: am1008w_uart
+
+sensor:
+- platform: custom
+  lambda: |-
+    auto am1008wSensor = new AM1008WSensor(id(am1008w_uart), 10000);
+    App.register_component(am1008wSensor);
+    return {am1008wSensor->co2_sensor, am1008wSensor->voc_sensor, am1008wSensor->humidity_sensor, am1008wSensor->temperature_sensor, am1008wSensor->pm1_0_grimm_sensor, am1008wSensor->pm2_5_grimm_sensor, am1008wSensor->pm10_grimm_sensor, am1008wSensor->pm1_0_tsi_sensor, am1008wSensor->pm2_5_tsi_sensor, am1008wSensor->pm10_tsi_sensor};
+  sensors:
+  - name: "CO2"
+    accuracy_decimals: 0
+    unit_of_measurement: "ppm"
+    icon: "mdi:molecule-co2"
+  - name: "VOC"
+    accuracy_decimals: 0
+    unit_of_measurement: "level"
+    icon: "mdi:molecule"
+  - name: "Humidity"
+    accuracy_decimals: 1
+    unit_of_measurement: "%"
+    icon: "mdi:water-percent"
+  - name: "Temperature"
+    accuracy_decimals: 1
+    unit_of_measurement: "°C"
+    icon: "mdi:thermometer"
+  - name: "PM1_0_GRIMM"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
+  - name: "PM2_5_GRIMM"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
+  - name: "PM10_GRIMM"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
+  - name: "PM1_0_TSI"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
+  - name: "PM2_5_TSI"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
+  - name: "PM10_TSI"
+    accuracy_decimals: 0
+    unit_of_measurement: "µg/m³"
+    icon: "mdi:blur"
