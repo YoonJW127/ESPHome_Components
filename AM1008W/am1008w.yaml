@@ -1,6 +1,10 @@
 esphome:
   includes:
     - "cm1106.h"
+
+logger:
+  logs:
+    component: ERROR
     
 captive_portal:
 
