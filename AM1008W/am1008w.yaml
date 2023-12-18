@@ -1,3 +1,7 @@
+esphome:
+  includes:
+    - "cm1106.h"
+    
 captive_portal:
 
 uart:
